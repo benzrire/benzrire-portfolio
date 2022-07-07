@@ -1,0 +1,39 @@
+@import "styles/variables";
+@import "styles/animations";
+@import "styles/fonts";
+
+.sectionIntroduce {
+  .hi, .description {
+    margin: 0;
+  }
+
+  .hi, .description, .sayhi {
+    @include font-body-light;
+    color: $dark;
+  }
+
+  .sayhi {
+    display: inline-block;
+    font-size: 18px;
+    margin-top: 20px;
+
+    .iconSayHi {
+      display: inline-block;
+      vertical-align: bottom;
+    }
+  }
+
+  .name {
+    @include font-headline-2;
+    margin: 20px 0;
+
+    background: #9845E8;
+    background: -moz-linear-gradient(left, #9845E8 0%, #33D2FF 50%, #DD5789 100%);
+    background: -webkit-linear-gradient(left, #9845E8 0%, #33D2FF 50%, #DD5789 100%);
+    background: linear-gradient(to right, #9845E8 0%, #33D2FF 50%, #DD5789 100%);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
