@@ -1,0 +1,58 @@
+@mixin font($font-size, $font-weight, $line-height: normal) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+	font-family: 'Poppins', 'Sarabun', Arial, Helvetica, sans-serif;
+}
+
+@mixin font-headline-1 {
+  @include font(80px, 600);
+}
+
+@mixin font-headline-2 {
+  @include font(46px, 600, 64px);
+}
+
+@mixin font-subhead-bold {
+  @include font(24px, 600);
+}
+
+@mixin font-subhead-med {
+  @include font(24px, 500);
+}
+
+@mixin font-subhead-reg {
+  @include font(24px, 400);
+}
+
+@mixin font-subhead-light {
+  @include font(24px, 300);
+}
+
+@mixin font-body-bold {
+  @include font(16px, 600);
+}
+
+@mixin font-body-med {
+  @include font(16px, 500);
+}
+
+@mixin font-body-reg {
+  @include font(16px, 400);
+}
+
+@mixin font-body-light {
+  @include font(16px, 300);
+}
+
+@mixin font-small-caption-bold {
+  @include font(12px, 600);
+}
+
+@mixin font-small-caption-med {
+  @include font(12px, 500);
+}
+
+@mixin font-small-caption-reg {
+  @include font(12px, 400);
+}

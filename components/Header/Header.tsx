@@ -12,18 +12,26 @@ const Header: FunctionComponent<Props> = ({  }) => {
   const [isHeaderActive, setIsHeaderActive] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', (e) => {
-      setIsHeaderActive(window.scrollY > 0);
-    });
-  }, []);
+    document.querySelector('html')!.style.overflow = isHeaderActive ? 'hidden' : 'auto';
+  }, [isHeaderActive]);
+
+  const toggleNavHandler = () => {
+    setIsHeaderActive(!isHeaderActive);
+  }
 
   return (
     <header className={classnames(styles.header, (isHeaderActive && styles.active))}>
       <Container maxWidth="lg">
         <div className={styles.headerWrapper}>
+
           <div className={styles.headerLogo}>
             <span>Suthipong N.</span>
           </div>
+
+          <div className={classnames(styles.headerNavToggle, (isHeaderActive && styles.open))} onClick={toggleNavHandler}>
+            <div className={styles.icon}></div>
+          </div>
+
           <ul className={styles.headerNav}>
             <li className={styles.headerNavItem}>
               <Link href='#'>
@@ -46,6 +54,7 @@ const Header: FunctionComponent<Props> = ({  }) => {
               </Link>
             </li>
           </ul>
+
         </div>
       </Container>
     </header>

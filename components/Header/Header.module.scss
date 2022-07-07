@@ -1,27 +1,49 @@
 @import "styles/variables";
 @import "styles/animations";
+@import "styles/fonts";
 
 .header {
   position: fixed;
   
   width: 100%;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  height: 65px;
+  overflow: hidden;
  
-  background: white;
+  color: $dark;
+  background: $white;
   box-shadow: 0px 0px 10px 0px $black-shadow;
 
   @include transition;
 
   &.active {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    height: 100%;
+  }
+
+  @media ($sm) {
+    height: auto;
   }
 
   .headerWrapper {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+
+    @media ($sm) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .headerLogo {
+      @include font-subhead-light;
+
+      padding-top: 15px;
+      padding-bottom: 15px;
+
+      @media ($sm) {
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+    }
 
     .headerNav {
       margin: 0;
@@ -29,18 +51,87 @@
       list-style: none;
 
       display: flex;
-      flex-wrap: nowrap;
-      align-items: center;
+      flex-direction: column;
+
+      @media ($sm) {
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-items: center;
+      }
 
       .headerNavItem {
-        padding: 0 15px;
+        @include font-body-light;
 
-        &:first-child {
-          padding-left: 0;
+        padding: 10px 0;
+
+        @media ($sm) {
+          padding: 0 15px;
+
+          &:first-child {
+            padding-left: 0;
+          }
+  
+          &:last-child {
+            padding-right: 0;
+          }
         }
+      }
+    }
 
-        &:last-child {
-          padding-right: 0;
+    .headerNavToggle {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      padding: 15px;
+      @include transition;
+
+      top: 8px;
+      right: 10px;
+
+      @media ($sm) {
+        display: none;
+      }
+      
+      .icon {
+        position: absolute;
+        top: 50%;
+        width: 18px;
+        height: 2px;
+        background-color: $dark;
+
+        @include transition;
+
+        &:before, &:after {
+          content: '';
+          position: absolute;
+          width: 18px;
+          height: 2px;
+          background-color: $dark;
+
+          @include transition;
+        }
+        
+        &:before {
+          top: -6px;
+        }
+        
+        &:after {
+          top: 6px;
+        }
+      }
+      
+      &.open {
+        .icon {
+          @include transition;
+          background: transparent;
+          
+          &:before{
+            transform: rotateZ(45deg) scaleX(1.1) translate(4px, 4px);
+          }
+    
+          &:after{
+            transform: rotateZ(-45deg) scaleX(1.1) translate(4px, -4px);
+          }
         }
       }
     }
