@@ -45,38 +45,79 @@
       }
     }
 
-    .headerNav {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-
+    .headerNavWrapper {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      align-items: center;
 
-      @media ($sm) {
-        flex-wrap: nowrap;
-        flex-direction: row;
-        align-items: center;
-      }
-
-      .headerNavItem {
-        @include font-body-light;
-
-        padding: 10px 0;
-
-        @media ($sm) {
-          padding: 0 15px;
-
-          &:first-child {
-            padding-left: 0;
-          }
+      .headerNav {
+        margin: 0;
+        padding: 0;
+        list-style: none;
   
-          &:last-child {
-            padding-right: 0;
+        display: flex;
+        flex-direction: column;
+  
+        @media ($sm) {
+          flex-wrap: nowrap;
+          flex-direction: row;
+          align-items: center;
+        }
+  
+        .headerNavItem {
+          @include font-body-light;
+  
+          padding: 10px 0;
+  
+          @media ($sm) {
+            padding: 0 10px;
+  
+            &:first-child {
+              padding-left: 0;
+            }
+          }
+
+          @media ($md) {
+            padding: 0 15px;
           }
         }
       }
+
+      .brightnessModeWrapper {
+        position: absolute;
+        top: 8px;
+        right: 58px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 12px;
+
+        @media ($sm) {
+          position: relative;
+          top: 0;
+          right: 0;
+
+          margin-left: 20px;
+          margin-right: -12px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+  
+        .brightnessIcon {
+          color: $dark;
+          font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 48
+        }
+      }
     }
+
 
     .headerNavToggle {
       position: absolute;
@@ -131,6 +172,39 @@
     
           &:after{
             transform: rotateZ(-45deg) scaleX(1.1) translate(4px, -4px);
+          }
+        }
+      }
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .header {
+    color: $white;
+    background: $dark;
+    box-shadow: none;
+  
+    .headerWrapper {
+      .headerNavToggle {
+        .icon {
+          background-color: $white;
+
+          &:before, &:after {
+            background-color: $white;
+          }
+        }
+        &.open {
+          .icon {
+            background: transparent;
+          }
+        }
+      }
+
+      .headerNavWrapper {
+        .brightnessModeWrapper {
+          .brightnessIcon {
+            color: $white;
           }
         }
       }

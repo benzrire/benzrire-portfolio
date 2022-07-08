@@ -3,6 +3,8 @@
 @import "styles/fonts";
 
 .sectionIntroduce {
+  background: $white;
+
   .hi, .description {
     margin: 0;
   }
@@ -35,5 +37,15 @@
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+}
+
+[data-theme='dark'] {
+  .sectionIntroduce {
+    background: $dark;
+
+    .hi, .description, .sayhi {
+      color: $white;
+    }
   }
 }

@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import Link from 'next/link';
-import styles from './Header.module.scss';
 import classnames from 'classnames';
+import { useTheme } from 'next-themes'
+import styles from './Header.module.scss';
 
 import { Container } from '@mui/material';
 
@@ -10,6 +11,7 @@ type Props = {}
 const Header: FunctionComponent<Props> = ({  }) => {
 
   const [isHeaderActive, setIsHeaderActive] = useState(false);
+  const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     document.querySelector('html')!.style.overflow = isHeaderActive ? 'hidden' : 'auto';
@@ -17,6 +19,10 @@ const Header: FunctionComponent<Props> = ({  }) => {
 
   const toggleNavHandler = () => {
     setIsHeaderActive(!isHeaderActive);
+  }
+
+  const toggleThemeHandler = () => {
+    setTheme(theme == 'dark' ? 'light' : 'dark');
   }
 
   return (
@@ -32,28 +38,34 @@ const Header: FunctionComponent<Props> = ({  }) => {
             <div className={styles.icon}></div>
           </div>
 
-          <ul className={styles.headerNav}>
-            <li className={styles.headerNavItem}>
-              <Link href='#'>
-                <a>Who am I ?</a>
-              </Link>
-            </li>
-            <li className={styles.headerNavItem}>
-              <Link href='#'>
-                <a>Experience</a>
-              </Link>
-            </li>
-            <li className={styles.headerNavItem}>
-              <Link href='#'>
-                <a>Projects</a>
-              </Link>
-            </li>
-            <li className={styles.headerNavItem}>
-              <Link href='#'>
-                <a>Contact me</a>
-              </Link>
-            </li>
-          </ul>
+          <div className={styles.headerNavWrapper}>
+            <ul className={styles.headerNav}>
+              <li className={styles.headerNavItem}>
+                <Link href='#'>
+                  <a>Who am I ?</a>
+                </Link>
+              </li>
+              <li className={styles.headerNavItem}>
+                <Link href='#'>
+                  <a>Experience</a>
+                </Link>
+              </li>
+              <li className={styles.headerNavItem}>
+                <Link href='#'>
+                  <a>Projects</a>
+                </Link>
+              </li>
+              <li className={styles.headerNavItem}>
+                <Link href='#'>
+                  <a>Contact me</a>
+                </Link>
+              </li>
+            </ul>
+
+            <div className={styles.brightnessModeWrapper} onClick={toggleThemeHandler}>
+              <span className={classnames(styles.brightnessIcon, "material-symbols-outlined")}>brightness_{ theme == 'dark' ? '7' : '4' }</span>
+            </div>
+          </div>
 
         </div>
       </Container>
