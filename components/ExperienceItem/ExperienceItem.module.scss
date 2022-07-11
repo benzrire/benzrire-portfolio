@@ -1,0 +1,74 @@
+@import "styles/variables";
+@import "styles/animations";
+@import "styles/fonts";
+
+.experienceItem {
+
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+
+  .title {
+    margin: 0;
+    color: $dark;
+    @include font-subhead-light;
+
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+
+    @media ($sm) {
+      flex-direction: row;
+    }
+
+    .date {
+      color: $dark;
+      @include font-body-light;
+
+      @media ($sm) {
+        margin-left: auto;
+      }
+    }
+  }
+
+  .companyLink {
+    color: $blue;
+    @include font-small-caption-light;
+  }
+
+  .description {
+    color: $dark;
+    margin: 15px 0 0;
+    @include font-body-light;
+  }
+
+  .descriptionList {
+    color: $dark;
+    padding-left: 18px;
+    list-style: circle;
+  }
+}
+
+[data-theme='dark'] {
+  .experienceItem {  
+    .title {
+      color: $white;
+  
+      .date {
+        color: $white;
+      }
+    }
+  
+    .companyLink {
+      color: $light-blue;
+    }
+  
+    .description {
+      color: $white;
+    }
+  
+    .descriptionList {
+      color: $white;
+    }
+  }
+}

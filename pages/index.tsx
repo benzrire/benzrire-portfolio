@@ -4,6 +4,7 @@ import styles from 'styles/Home.module.scss'
 
 import Header from '@/components/Header/Header'
 import Introduce from '@/sections/Introduce/Introduce'
+import Experience from '@/sections/Experience/Experience'
 
 const Home: NextPage = () => {
   return (
@@ -19,6 +20,8 @@ const Home: NextPage = () => {
       <main className={styles.main}>
 
         <Introduce />
+
+        <Experience />
 
       </main>
     </div>

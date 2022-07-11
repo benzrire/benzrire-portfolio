@@ -1,0 +1,27 @@
+@import "styles/variables";
+@import "styles/animations";
+@import "styles/fonts";
+
+.sectionExperience {
+  background: $white;
+
+  .header {
+    color: $dark;
+    margin: 0 0 30px;
+    @include font-subhead-med;
+
+    @media ($md) {
+      margin: 0;
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .sectionExperience {
+    background: $dark;
+
+    .header {
+      color: $white;
+    }
+  }
+}

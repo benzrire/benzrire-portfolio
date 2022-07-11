@@ -31,7 +31,7 @@ const Header: FunctionComponent<Props> = ({  }) => {
         <div className={styles.headerWrapper}>
 
           <div className={styles.headerLogo}>
-            <span>Suthipong N.</span>
+            <span>SN.</span>
           </div>
 
           <div className={classnames(styles.headerNavToggle, (isHeaderActive && styles.open))} onClick={toggleNavHandler}>
