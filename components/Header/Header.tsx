@@ -3,6 +3,7 @@ import Link from 'next/link';
 import classnames from 'classnames';
 import { useTheme } from 'next-themes'
 import styles from './Header.module.scss';
+import NonSSRWrapper from '@/layouts/NonSSRWrapper/NonSSRWrapper';
 
 import { Container } from '@mui/material';
 
@@ -31,7 +32,7 @@ const Header: FunctionComponent<Props> = ({  }) => {
         <div className={styles.headerWrapper}>
 
           <div className={styles.headerLogo}>
-            <span>SN.</span>
+            <span>JD.</span>
           </div>
 
           <div className={classnames(styles.headerNavToggle, (isHeaderActive && styles.open))} onClick={toggleNavHandler}>
@@ -63,7 +64,9 @@ const Header: FunctionComponent<Props> = ({  }) => {
             </ul>
 
             <div className={styles.brightnessModeWrapper} onClick={toggleThemeHandler}>
-              <span className={classnames(styles.brightnessIcon, "material-symbols-outlined")}>brightness_{ theme == 'dark' ? '7' : '4' }</span>
+              <NonSSRWrapper>
+                <span className={classnames(styles.brightnessIcon, "material-symbols-outlined")}>brightness_{ theme == 'dark' ? '7' : '4' }</span>
+              </NonSSRWrapper>
             </div>
           </div>
 

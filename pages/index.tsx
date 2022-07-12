@@ -1,12 +1,19 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from 'styles/Home.module.scss'
+import axios from 'axios'
 
 import Header from '@/components/Header/Header'
 import Introduce from '@/sections/Introduce/Introduce'
-import Experience from '@/sections/Experience/Experience'
+import Experience, { ExperienceItemProp } from '@/sections/Experience/Experience'
 
-const Home: NextPage = () => {
+import { getExperiences } from '@/services'
+
+type Props = {
+  experiences: Array<ExperienceItemProp>
+}
+
+const Home: NextPage<Props> = ({ experiences }) => {
   return (
     <div>
       <Head>
@@ -21,11 +28,35 @@ const Home: NextPage = () => {
 
         <Introduce />
 
-        <Experience />
+        <Experience experienceItems={experiences} />
 
       </main>
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  let experiences:Array<ExperienceItemProp> = []
+
+  const res = await getExperiences();
+
+  if (res!.data?.data) {
+    experiences = res!.data.data.map((item: any) => {
+      return {
+        title: item.attributes?.title,
+        date: item.attributes?.date,
+        companyLabel: item.attributes?.companyLabel,
+        companyLink: item.attributes?.companyLink,
+        description: item.attributes?.description,
+        descriptionList: item.attributes?.description_lists.data?.map((list: any) => {
+          return list.attributes?.description
+        }),
+      }
+    })
+  }
+
+  // Pass data to the page via props
+  return { props: { experiences } }
 }
 
 export default Home

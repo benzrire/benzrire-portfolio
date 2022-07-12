@@ -12,7 +12,7 @@ const Introduce: FunctionComponent<Props> = ({}) => {
   return (
     <Section className={styles.sectionIntroduce}>
       <p className={styles.hi}>Hey, I'am</p>
-      <h1 className={styles.name}>Suthipong Numpolsak</h1>
+      <h1 className={styles.name}>John Doe</h1>
       <p className={styles.description}>
         I'm a software engineer based in Toronto, Canada and also a communication and journalism student. 
         I enjoy creating things that live on the internet, whether that be websites, applications, or anything in between. 

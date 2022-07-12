@@ -21,6 +21,10 @@
 
   @media ($sm) {
     height: auto;
+
+    &.active {
+      height: auto;
+    }
   }
 
   .headerWrapper {
@@ -92,6 +96,8 @@
         align-items: center;
         justify-content: center;
 
+        width: 48px;
+        height: 48px;
         padding: 12px;
 
         @media ($sm) {

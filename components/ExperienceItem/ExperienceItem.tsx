@@ -28,7 +28,7 @@ const ExperienceItem: FunctionComponent<Props> = ({ title, date, companyLabel, c
 
       {description && <div className={styles.description}>{description}</div>}
 
-      {descriptionList && <ul className={classnames(styles.description, styles.descriptionList)}>{descriptionList.map((item) => <li>{item}</li>)}</ul>}
+      {descriptionList && <ul className={classnames(styles.description, styles.descriptionList)}>{descriptionList.map((item, index) => <li key={`${companyLabel}_${index}`}>{item}</li>)}</ul>}
     </div>
   );
 }
